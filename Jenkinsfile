@@ -10,7 +10,12 @@ pipeline {
             steps{
                 sh "./gradlew test"
             }
-            
+        stage(){
+            steps{
+                sh "./gradlew jacocoTestReport"
+                sh "./gradlew jacocoTestCoverageVerification"
+                }
+            }
         }
     }
 }
