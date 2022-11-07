@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.45.1">
+<file name="/Users/leon/Desktop/DevOps/SampleProjectForPipeline/calculator/src/main/java/com/leon/calculator/CalculatorController.java">
+</file>
+<file name="/Users/leon/Desktop/DevOps/SampleProjectForPipeline/calculator/src/main/java/com/leon/calculator/CalculatorApplication.java">
+<error line="8" column="37" severity="error" message="Name &apos;constant&apos; must match pattern &apos;^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.ConstantNameCheck"/>
+</file>
+<file name="/Users/leon/Desktop/DevOps/SampleProjectForPipeline/calculator/src/main/java/com/leon/calculator/Calculator.java">
+</file>
+</checkstyle>
