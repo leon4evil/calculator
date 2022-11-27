@@ -32,5 +32,15 @@ pipeline {
                 sh "./gradlew checkstyleMain"
             }
         }
+        stage("Package"){
+            steps{
+                sh "./gradle build"
+            }
+        }
+        stage("Docker build"){
+            steps{
+                sh "docker build -t lh51455/calculator ."
+            }
+        }
     }
 }
