@@ -42,5 +42,8 @@ pipeline {
                 sh "docker build -t lh51455/calculator ."
             }
         }
+        stage("Docker push"){
+            sh "docker push lh51455/calculator"
+        }
     }
 }
