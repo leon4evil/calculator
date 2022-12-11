@@ -42,17 +42,17 @@ pipeline {
 //                 sh "./gradlew build"
 //             }
 //         }
-        stage("Docker build"){
-            steps{
-                sh "docker build -t lh51455/calculator ."
-            }
-        }
-        stage("Docker push"){
-            steps {
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-                sh "docker push lh51455/calculator"
-            }
-        }
+//         stage("Docker build"){
+//             steps{
+//                 sh "docker build -t lh51455/calculator ."
+//             }
+//         }
+//         stage("Docker push"){
+//             steps {
+//                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+//                 sh "docker push lh51455/calculator"
+//             }
+//         }
         stage("Deploy to staging"){
             steps{
                 sh "docker run -d --rm -p 8765:80 --name calculator lh51455/calculator"
