@@ -55,7 +55,7 @@ pipeline {
         }
         stage("Deploy to staging"){
             steps{
-                sh "docker run -d --rm -p 8765:8080 --name calculator lh51455/calculator"
+                sh "docker run -d --rm -p 88:8081 --name calculator lh51455/calculator"
             }
         }
         stage("Acceptance test"){
@@ -67,9 +67,9 @@ pipeline {
         }
 
     }
-//     post {
-//         always {
-//             sh "docker stop calculator"
-//         }
-//     }
+    post {
+        always {
+            sh "docker stop calculator"
+        }
+    }
 }
