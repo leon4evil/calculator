@@ -1,5 +1,10 @@
 pipeline {
     agent any
+
+    environment {
+            DOCKERHUB_CREDENTIALS = credentials('8730e26a-94d5-4465-acb5-afb7556a9506')
+        }
+
     stages{
 //         stage("Compile"){
 //             steps{
@@ -43,8 +48,8 @@ pipeline {
             }
         }
         stage("Docker push"){
-            steps{
-                sh "docker login -u lh51455 -p siB5_kH76j$r!k&"
+            steps {
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                 sh "docker push lh51455/calculator"
             }
         }
