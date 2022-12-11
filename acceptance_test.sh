@@ -1,2 +1,2 @@
 #!/bin/bash
-curl 'http://localhost:8765/sum?a=1&b=4'
+test $(curl 'http://localhost:8765/sum?a=1&b=4') -eq 5
