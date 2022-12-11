@@ -55,12 +55,12 @@ pipeline {
 //         }
         stage("Deploy to staging"){
             steps{
-                sh "docker run -d --rm -p 8765:2375 --name calculator lh51455/calculator"
+                sh "docker run -d --rm -p 8765:8080 --name calculator lh51455/calculator"
             }
         }
         stage("Acceptance test"){
             steps{
-                sleep 30
+                sleep 60
                 sh "chmod +x acceptance_test.sh && ./acceptance_test.sh"
             }
         }
