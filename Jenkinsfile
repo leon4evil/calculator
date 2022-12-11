@@ -43,7 +43,9 @@ pipeline {
             }
         }
         stage("Docker push"){
-            sh "docker push lh51455/calculator"
+            steps{
+                sh "docker push lh51455/calculator"
+            }
         }
     }
 }
