@@ -62,7 +62,7 @@ pipeline {
             steps{
 //                 sleep 15
 //                sh "chmod +x acceptance_test.sh && ./acceptance_test.sh"
-                sh "test \$(curl --retry-connrefused --retry 1 --retry-delay 1 '0.0.0.0:88/sum?a=1&b=4') -eq 5"
+                sh "test \$(curl --retry-connrefused --retry 1 --retry-delay 1 'http://0.0.0.0:88/sum?a=1&b=4') -eq 5"
             }
         }
 
