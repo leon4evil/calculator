@@ -44,6 +44,7 @@ pipeline {
         }
         stage("Docker push"){
             steps{
+                docker login -u "lh51455" -p "siB5_kH76j$r!k&" docker.io
                 sh "docker push lh51455/calculator"
             }
         }
