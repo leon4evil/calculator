@@ -60,15 +60,15 @@ pipeline {
         }
         stage("Acceptance test"){
             steps{
-                sleep 90
+                sleep 15
                 sh "chmod +x acceptance_test.sh && ./acceptance_test.sh"
             }
         }
 
     }
-    post {
-        always {
-            sh "docker stop calculator"
-        }
-    }
+//     post {
+//         always {
+//             sh "docker stop calculator"
+//         }
+//     }
 }
