@@ -5,7 +5,7 @@ pipeline {
             DOCKERHUB_CREDENTIALS = credentials('8730e26a-94d5-4465-acb5-afb7556a9506')
         }
 
-//     stages{
+    stages{
 //         stage("Compile"){
 //             steps{
 //                 sh "./gradlew compileJava"
