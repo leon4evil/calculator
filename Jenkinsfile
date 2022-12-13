@@ -53,11 +53,11 @@ pipeline {
 //                 sh "docker push lh51455/calculator"
 //             }
 //         }
-//         stage("Deploy to staging"){
-//             steps{
-//                 sh "docker run -d --rm -p 88:8081 --name calculator lh51455/calculator"
-//             }
-//         }
+        stage("Deploy to staging"){
+            steps{
+                sh "docker run -d --rm -p 88:8081 --name calculator lh51455/calculator"
+            }
+        }
         stage("Acceptance test"){
             steps{
                  sleep 15
