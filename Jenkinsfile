@@ -60,18 +60,17 @@ pipeline {
         }
         stage("Acceptance test"){
             steps{
-                 sleep 15
-                 sh "./gradlew acceptanceTest -Dcalculator.url=http://host.docker.internal:88"
-                 sleep 180
+                 sleep 30
+                 sh "./gradlew acceptanceTest -Dcalculator.url=http://host.docker.internal:88 --stacktrace"
                 //sh "chmod +x acceptance_test.sh && ./acceptance_test.sh"
                 // sh "test \$(curl --retry-connrefused --retry 1 --retry-delay 1 'http://host.docker.internal:88/sum?a=1&b=4') -eq 5"
             }
         }
 
     }
-    post {
-        always {
-            sh "docker stop calculator"
-        }
-    }
+//     post {
+//         always {
+//             sh "docker stop calculator"
+//         }
+//     }
 }
