@@ -71,7 +71,7 @@ pipeline {
     }
     post {
         always {
-        sleep 15
+        sleep 30
         sh "docker stop calculator"
         }
     }
