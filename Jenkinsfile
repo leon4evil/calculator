@@ -56,7 +56,6 @@ pipeline {
         stage("Deploy to staging"){
             steps{
                 sh "docker run -d --rm -p 88:8081 --name calculator lh51455/calculator"
-                sleep 30
             }
         }
         stage("Acceptance test"){
