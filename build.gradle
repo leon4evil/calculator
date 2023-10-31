@@ -27,6 +27,7 @@ dependencies {
 //	//useJUnitPlatform()
 //	exclude '**/acceptance/**'
 //}
+//
 
 tasks.register('acceptanceTest', Test){
 	include '**/acceptance/**'
