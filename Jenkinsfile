@@ -69,10 +69,10 @@ pipeline {
         }
 
     }
-    post {
-        always {
-        sleep 30
-        sh "docker stop calculator"
-        }
-    }
+//     post {
+//         always {
+//         sleep 30
+//         sh "docker stop calculator"
+//         }
+//     }
 }
