@@ -64,13 +64,14 @@ pipeline {
                  sh "./gradlew acceptanceTest -Dcalculator.url=http://host.docker.internal:88 --stacktrace"
                 //sh "chmod +x acceptance_test.sh && ./acceptance_test.sh"
                 // sh "test \$(curl --retry-connrefused --retry 1 --retry-delay 1 'http://host.docker.internal:88/sum?a=1&b=4') -eq 5"
+                sleep 30
             }
         }
 
     }
     post {
         always {
-        sleep 30
+        sleep 15
             sh "docker stop calculator"
         }
     }
