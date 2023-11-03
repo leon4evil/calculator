@@ -70,7 +70,7 @@ pipeline {
     }
     post {
         always {
-            sleep 60 //need to sleep otherwise previous step fails
+            sleep 60 //need to sleep otherwise previous step failss
             sh "docker stop calculator"
         }
     }
