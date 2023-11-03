@@ -44,18 +44,18 @@ pipeline {
         }
         stage("Docker build"){
             steps{
-                sh "docker build -t lh51455/calculator:{BUILD_TIMESTAMP} ."
+                sh "docker build -t lh51455/calculator:${BUILD_TIMESTAMP} ."
             }
         }
         stage("Docker push"){
             steps {
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-                sh "docker push lh51455/calculator:{BUILD_TIMESTAMP}"
+                sh "docker push lh51455/calculator:${BUILD_TIMESTAMP}"
             }
         }
         stage("Deploy to staging"){
             steps{
-                sh "docker run -d --rm -p 88:8081 --name calculator lh51455/calculator:{BUILD_TIMESTAMP}"
+                sh "docker run -d --rm -p 88:8081 --name calculator lh51455/calculator:${BUILD_TIMESTAMP}"
             }
         }
         stage("Acceptance test"){
@@ -71,7 +71,7 @@ pipeline {
     post {
         always {
             sleep 60 //need to sleep otherwise previous step failss
-            sh "docker stop calculator:{BUILD_TIMESTAMP}"
+            sh "docker stop calculator:${BUILD_TIMESTAMP}"
         }
     }
 }
