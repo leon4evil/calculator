@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: calculator
-        image: lh51455/calculator:caching
+        image: lh51455/calculator:{{VERSION}}
         ports:
         - containerPort: 8081
         readinessProbe:

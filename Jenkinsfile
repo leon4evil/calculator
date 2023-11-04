@@ -53,9 +53,18 @@ pipeline {
                 sh "docker push lh51455/calculator:${BUILD_TIMESTAMP}"
             }
         }
+        stage("Update version"){
+            steps {
+                sh "sed -i 's/{{VERSION}}/${BUILD_TIMESTAMP}/g' deployment.yaml"
+            }
+        }
         stage("Deploy to staging"){
             steps{
-                sh "docker run -d --rm -p 88:8081 --name calculator lh51455/calculator:${BUILD_TIMESTAMP}"
+                sh "kubectl config use-context staging"
+                sh "kubectl apply -f hazelcast.yaml"
+                sh "kubectl apply -f deployment.yaml"
+                sh "kubectl apply -f service.yaml"
+                // sh "docker run -d --rm -p 88:8081 --name calculator lh51455/calculator:${BUILD_TIMESTAMP}"
             }
         }
         stage("Acceptance test"){
