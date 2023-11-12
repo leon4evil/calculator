@@ -70,16 +70,34 @@ pipeline {
         stage("Acceptance test"){
             steps{
                 sleep 30
-                sh "./gradlew acceptanceTest -Dcalculator.url=http://host.docker.internal:30626 --stacktrace"
-                // sh "chmod +x acceptance_test.sh && ./acceptance_test.sh"
+                // sh "./gradlew acceptanceTest -Dcalculator.url=http://host.docker.internal:30626 --stacktrace"
+                sh "chmod +x acceptance_test.sh && ./acceptance_test.sh"
                 // sh "test \$(curl --retry-connrefused --retry 5 --retry-delay 1 'http://host.docker.internal:88/sum?a=1&b=4') -eq 5"
             }
         }
 
+        //Performance test stages
+
+        stage("Release (PROD)"){
+            steps{
+                sh "kubectl config use-context arn:aws:eks:us-west-2:678962441975:cluster/education-eks-BuxEGFJ1"
+                sh "kubectl apply -f hazelcast.yaml"
+                sh "kubectl apply -f deployment.yaml"
+                sh "kubectl apply -f service.yaml"
+
+            }
+        }
+
+        stage("Smoke test"){
+            steps{
+                sleep 30
+                sh "chmod +x smoke-test.sh && ./smoke-test.sh"
+            }
+        }
     }
     post {
         always {
-            sleep 60 //need to sleep otherwise previous step failss
+            sleep 60 //need to sleep otherwise previous step fails
             sh "docker stop calculator:${BUILD_TIMESTAMP}"
         }
     }
