@@ -80,7 +80,7 @@ pipeline {
 
         stage("Release (PROD)"){
             steps{
-                sh "kubectl config use-context arn:aws:eks:us-west-2:678962441975:cluster/education-eks-L4rlOjyb"
+                sh "kubectl config use-context arn:aws:eks:us-west-2:678962441975:cluster/education-eks-0N56QNCT"
                 sh "kubectl apply -f hazelcast.yaml"
                 sh "kubectl apply -f deployment.yaml"
                 sh "kubectl apply -f service.yaml"
