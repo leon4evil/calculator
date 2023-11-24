@@ -69,7 +69,7 @@ pipeline {
         }
         stage("Acceptance test"){
             steps{
-                sleep 30
+                sleep 45
                 // sh "./gradlew acceptanceTest -Dcalculator.url=http://host.docker.internal:30626 --stacktrace"
                 sh "chmod +x acceptance_test.sh && ./acceptance_test.sh"
                 // sh "test \$(curl --retry-connrefused --retry 5 --retry-delay 1 'http://host.docker.internal:88/sum?a=1&b=4') -eq 5"
@@ -80,7 +80,7 @@ pipeline {
 
         stage("Release (PROD)"){
             steps{
-                sh "kubectl config use-context arn:aws:eks:us-west-2:678962441975:cluster/education-eks-0N56QNCT"
+                sh "kubectl config use-context arn:aws:eks:us-west-2:678962441975:cluster/education-eks-QX2k7tbJ"
                 sh "kubectl apply -f hazelcast.yaml"
                 sh "kubectl apply -f deployment.yaml"
                 sh "kubectl apply -f service.yaml"
